@@ -78,13 +78,31 @@ function fug(users){
 let ageTag = users.filter(fug).map(allAges)
 printKata(7, ageTag)
 
-
+//kata 8 - reduce
 function balances(users){
     return users.balance
 }
 
 let sum = users.reduce(function(accumulator, currentValue) {
-    return accumulator + currentValue
-})
-
+    console.log(currentValue)
+    let finalBal = parseInt(currentValue.balance.replace("$", "").replace(",", ""))
+    return accumulator + finalBal
+    
+}, 0)
 printKata(8, sum)
+
+
+//Kata 9 - code assisted by eric hoover
+let heading = document.createElement("h2")
+heading.innerText = "The Best Eye Color is Brown/Kata 9"
+document.body.append(heading)
+let colorList = document.createElement("ul")
+
+let eyesBrown = users.filter((user) => user.eyeColor === "brown")
+
+let eyesList = eyesBrown.map((user) => {
+    let li = document.createElement("li")
+    li.innerHTML = `<div>${user.name}</div><img src=${user.picture}/>`
+    colorList.append(li)
+ })
+ document.body.append(colorList)
